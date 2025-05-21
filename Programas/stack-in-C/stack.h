@@ -3,14 +3,13 @@
 
 #define SIZE_S 100
 
-typedef struct{
+typedef struct stack_t{
     int value;
-    Stack *top;
-}Stack;
+    struct stack_t *top;
+}stack_t;
 
-Stack *create_stack(Stack *stack, int size);
-Stack pop(Stack stack);
-Stack push(Stack stack);
-Stack free_stack(Stack *stack, int size);
+void print_stack(stack_t *stack, int size);
+void push(stack_t **stack, int value);
+void pop(stack_t **stack);
 
 #endif
