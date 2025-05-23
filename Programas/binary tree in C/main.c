@@ -5,6 +5,7 @@
 int main(int argc, char const *argv[]){
     bin_t bina[4]; // Minhas informações bases para formar a pilha
     bin_t *root = &bina[(sizeof(bina)/sizeof(bin_t))/2]; // A pilha em si, não inicializada
+    int var = 30;
 
     // Os dados brutos
     bina[0].value = 1;
@@ -16,7 +17,10 @@ int main(int argc, char const *argv[]){
     // Acessando a pilha    
     printf("Valor do poteiro: %d\n", root->value);
     printf("Ponteiro esquerdo: %d\n", root->left);
-    printf("Ponteiro direito: %d\n", root->right);
+    printf("Ponteiro direito: %d\n\n", root->right);
+
+    // Testando a busca binária
+    printf("Valor encontrado(certeiro ou aproximado) na busca binária: %d\n\n", binsearch(root, var));
 
     return 0;
 }

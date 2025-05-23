@@ -14,12 +14,15 @@ void inibin(bin_t bin[], int size){
     }
     bin_t *current = &bin[indexMiddle];
     for(int i = 0; i < size; i++){
-        int flag = 1;
-        while(flag){
+        current = &bin[indexMiddle];
+        if(i == indexMiddle){
+            continue;
+        }
+        while(1){
             if(bin[i].value < current->value){
                 if(current->left == NULL){
                     current->left = &bin[i];
-                    flag = 0;
+                    break;
                 }else{
                     current = current->left;
                     continue;
@@ -27,14 +30,36 @@ void inibin(bin_t bin[], int size){
             }else if(bin[i].value > current->value){
                 if(current->right == NULL){
                     current->right = &bin[i];
-                    flag = 0;
+                    break;
                 }else{
                     current = current->right;
                     continue;
                 }
             }else{
-                flag = 0;
+                break;
             }
         }
     }
+}
+
+int binsearch(bin_t *bin, int target){
+    bin_t *current = bin;
+    while(1){
+        if(target < current->value){
+            if(current->left != NULL){
+                current = current->left;
+                continue;
+            }
+            break;
+        }else if(target > current->value){
+            if(current->right != NULL){
+                current = current->right;
+                continue;
+            }
+            break;
+        }else{
+            break;
+        }
+    }
+    return current->value;
 }

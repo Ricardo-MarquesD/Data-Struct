@@ -8,5 +8,6 @@ typedef struct bin_t{
 }bin_t;
 
 void inibin(bin_t bin[], int size);
+int binsearch(bin_t *bin, int target);
 
 #endif
